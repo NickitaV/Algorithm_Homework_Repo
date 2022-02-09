@@ -12,6 +12,7 @@ namespace ProjectAlgorithm
             int WorkNumber = Convert.ToInt32(Console.ReadLine());
             primeNumberTest primeNumber = new primeNumberTest();
             Fib fib = new Fib();
+
             if (LessonNumber == 1)
             {
                 switch (WorkNumber)
@@ -32,76 +33,37 @@ namespace ProjectAlgorithm
 
                 }
             }
-            else {
+            if (LessonNumber == 2)
+            {
+                switch (WorkNumber)
+                {
+                    case 1:
+                        LinkedList<int> node = new LinkedList<int>();
+                        node.AddNode(50);
+                        node.AddNode(80);
+                        node.AddNode(90);
+                        node.AddNode(70);
+                        node.AddNode(89);
+                        node.AddNode(500);
+                        node.AddNode(800);
+                        Node<int> currentNode = node.FindNode(800);
+                        node.RemoveNode(currentNode);
+                        node.AddNodeAfter(currentNode, 5);
+                        node.RemoveNode(2);
+                        Console.WriteLine($"Общее колличество: { node.GetCount()}");
+                        break;
+                }
+            }
+
+            else
+            {
                 Console.WriteLine("Эти задания ещё не выполнены");
             }
 
         }
     }
 
-    public class primeNumberTest
-    {
-        public void NumberTest()
-        {
-            Console.WriteLine("Введите число");
-            long number = long.Parse(Console.ReadLine());
-
-            int d = 0;
-            int i = 2;
-            while (i < number)
-            {
-                if (number % i == 0)
-                {
-                    d++;
-
-                }
-                i++;
-            }
-            if (d == 0) { Console.WriteLine($"Число {number} простое"); }
-            else Console.WriteLine($"Число {number} не простое");
-        }
-
-    }
-
-    class Fib
-    {
-        public long Input()
-        {
-            Console.WriteLine("Введите целое число(колличество чисел в ряду Фибоначчи)");
-            long n = long.Parse(Console.ReadLine());
-            return n;
-        }
-        public void FibRekurs(long n)
-        {
-            static long FRekurs(long n)
-            {
-                if (n == 0) { return 0; }
-                if ((n == 1) || (n == 2)) { return 1; }
-                else return FRekurs(n - 1) + FRekurs(n - 2);
-            }
-            for (int i = 0; i < n; i++) { Console.WriteLine(FRekurs(i)); }
-        }
-        public void FibСycle(long n)
-        {
-            long fOne = 0;
-            long fTwo = 1;
-            long fSum;
-            long[] FibArr = new long[n];
-            FibArr[0] = 0;
-            FibArr[1] = 1;
-
-            for (int f = 2; f < n; f++)
-            {
-
-                fSum = fOne + fTwo;
-                FibArr[f] = fSum;
-                fOne = fTwo;
-                fTwo = fSum;
-            }
 
 
-            for (int i = 0; i < n; i++) Console.WriteLine(FibArr[i]);
-        }
 
-    }
 }
