@@ -7,6 +7,6 @@ namespace ProjectAlgorithm
     interface IStartMenu
     {
         public void Input(out int LessonNumber, out int WorkNumber);
-        public void Choice(int LessonNumber, int WorkNumber, int k, int n);
+        public void Choice(int LessonNumber, int WorkNumber);
     }
 }
