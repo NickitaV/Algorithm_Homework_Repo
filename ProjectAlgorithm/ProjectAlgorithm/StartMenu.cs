@@ -8,28 +8,39 @@ namespace ProjectAlgorithm
 {
     internal class StartMenu : IStartMenu
     {
-        private void DoSomething(int k, int n)
+
+
+        public void Input(out int LessonNumber, out int WorkNumber)
         {
-            if ((k == 1) && (n == 1))
+            Console.WriteLine("Введите номер урока");
+            LessonNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите номер задания в уроке");
+            WorkNumber = Convert.ToInt32(Console.ReadLine());
+        }
+        public void Choice(int LessonNumber, int WorkNumber)
+        {
+
+
+            if ((LessonNumber == 1) && (WorkNumber == 1))
             {
                 primeNumberTest primeNumber = new primeNumberTest();
                 primeNumber.NumberTest();
             }
 
-            if ((k == 1) && (n == 2))
+            if ((LessonNumber == 1) && (WorkNumber == 2))
             {
                 File.WriteAllText(path: "lesson1_2.txt", "асимптоматическая сложность функции во 2 задании O(N3 + 2)");
                 string TxtFile = File.ReadAllText(path: "lesson1_2.txt");
                 Console.WriteLine(TxtFile);
             }
-            if ((k == 1) && (n == 3))
+            if ((LessonNumber == 1) && (WorkNumber == 3))
             {
                 Fib fib = new Fib();
                 long input = fib.Input();
                 fib.FibRekurs(input);
                 fib.FibСycle(input);
             }
-            if ((k == 2) && (n == 1))
+            if ((LessonNumber == 2) && (WorkNumber == 1))
             {
 
                 LinkedList<int> node = new LinkedList<int>();
@@ -47,7 +58,7 @@ namespace ProjectAlgorithm
                 Console.WriteLine($"Общее колличество { node.GetCount()}");
             }
 
-            if ((k == 3) && (n == 1))
+            if ((LessonNumber == 3) && (WorkNumber == 1))
             {
                 Console.WriteLine("Введите количество точек");
                 int PointSum = Convert.ToInt32(Console.ReadLine());
@@ -56,23 +67,38 @@ namespace ProjectAlgorithm
                 Console.WriteLine("Количество точек|PointStructDouble | PointClassDouble |    Ratio");
                 Console.WriteLine($"   {PointSum}                {structTime}                   {classTime}        {structTime / classTime}");
             }
-        }
-        public void Input(out int LessonNumber, out int WorkNumber)
-        {
-            Console.WriteLine("Введите номер урока");
-            LessonNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите номер задания в уроке");
-            WorkNumber = Convert.ToInt32(Console.ReadLine());
-        }
-        public void Choice(int LessonNumber, int WorkNumber, int k, int n)
-        {
 
-
-            if ((LessonNumber == k) && (WorkNumber == n))
+            if ((LessonNumber == 4) && (WorkNumber == 1))
             {
-                DoSomething(k, n);
-            }
 
+                TreeNode<int> treeNode = new TreeNode<int>();
+                treeNode.AddItem(16);
+                treeNode.AddItem(10);
+                treeNode.AddItem(7);
+                treeNode.AddItem(40);
+                treeNode.AddItem(100);
+                treeNode.AddItem(50);
+
+                treeNode.PrintTree();
+
+                Tree<int> Find = treeNode.GetNodeByValue(40);
+
+                if (Find != null)
+                {
+                    Console.WriteLine($"Найдено: {Find.Value}");
+                }
+                else { Console.WriteLine("Значения не найдено"); }
+
+                treeNode.RemoveItem(100);
+                treeNode.RemoveItem(10);
+
+                treeNode.PrintTree();
+
+
+
+
+
+            }
 
 
         }
