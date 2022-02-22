@@ -71,17 +71,18 @@ namespace ProjectAlgorithm
             if ((LessonNumber == 4) && (WorkNumber == 1))
             {
 
-                TreeNode<int> treeNode = new TreeNode<int>();
-                treeNode.AddItem(16);
-                treeNode.AddItem(10);
-                treeNode.AddItem(7);
-                treeNode.AddItem(40);
-                treeNode.AddItem(100);
-                treeNode.AddItem(50);
+                TreeMetod<int> treeMetod = new TreeMetod<int>();
+               
+                treeMetod.AddItem(16);
+                treeMetod.AddItem(10);
+                treeMetod.AddItem(7);
+                treeMetod.AddItem(40);
+                treeMetod.AddItem(100);
+                treeMetod.AddItem(50);
 
-                treeNode.PrintTree();
+                treeMetod.PrintTree();
 
-                Tree<int> Find = treeNode.GetNodeByValue(40);
+                Tree<int> Find = treeMetod.GetNodeByValue(40);
 
                 if (Find != null)
                 {
@@ -89,13 +90,30 @@ namespace ProjectAlgorithm
                 }
                 else { Console.WriteLine("Значения не найдено"); }
 
-                treeNode.RemoveItem(100);
-                treeNode.RemoveItem(10);
+                treeMetod.RemoveItem(100);
+                treeMetod.RemoveItem(10);
 
-                treeNode.PrintTree();
+                treeMetod.PrintTree();
 
+                treeMetod.AddAfterThis(16, 15);
+                treeMetod.AddAfterThis(16, 600);
+                treeMetod.AddAfterThis(600, 20);
+                treeMetod.AddAfterThis(15, 14);
+                treeMetod.AddAfterThis(15, 0);
+           
+                treeMetod.AddAfterThis(600,500 );
+                treeMetod.AddAfterThis(600, 800);
+                treeMetod.AddAfterThis(500, 200);
+                treeMetod.AddAfterThis(500, 536);
+                treeMetod.AddAfterThis(15,50);
 
+                treeMetod.PrintTree();
+                treeMetod.AcrossTreeDepth();
 
+                Console.WriteLine("-----------");
+                Console.WriteLine(" ");
+                Console.WriteLine(" ");
+                treeMetod.AcrossTreeWidth();
 
 
             }
