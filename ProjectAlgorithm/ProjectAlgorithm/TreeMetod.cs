@@ -6,10 +6,85 @@ using System.Threading.Tasks;
 
 namespace ProjectAlgorithm
 {
-    internal class TreeNode<T>
+    internal class TreeMetod<T>
     {
         public Tree<T> Head { get; set; }
 
+        public void AddAfterThis(int parentValue, T value)
+        {
+
+            Tree<T> numberValue = GetNodeByValue(parentValue);
+            Tree<T> newValue = new Tree<T>(value);
+            if (numberValue == null) { Console.WriteLine($"Значения [{parentValue}] в дереве нет"); }
+            else
+            {
+
+                if (Convert.ToInt32(value) < Convert.ToInt32(numberValue.Value))
+                {
+                    numberValue.Left = newValue;
+
+
+                }
+                else
+                {
+                    numberValue.Right = newValue;
+                }
+
+            }
+        }
+
+        public void AcrossTreeDepth()
+        {
+
+
+            Queue<int> treeValue = new Queue<int>();
+
+            Tree<T> current = Head;
+            Across(current);
+            foreach (int Val in treeValue) { Console.WriteLine(Val); }
+            void Across(Tree<T> current)
+            {
+
+                if (current != null)
+                { treeValue.Enqueue(Convert.ToInt32(current.Value)); }
+
+                else { return; }
+
+                Across(current.Left);
+                Across(current.Right);
+
+
+            }
+
+
+
+        }
+
+        public void AcrossTreeWidth()
+        {
+
+            Queue<int> treeValue = new Queue<int>();
+
+            Tree<T> current = Head;
+
+            var parentsNewQueue = new Queue<Tree<T>>();
+            parentsNewQueue.Enqueue(current);
+            while (parentsNewQueue.Count > 0)
+            {
+                current = parentsNewQueue.Dequeue();
+
+                treeValue.Enqueue(Convert.ToInt32(current.Value));
+                if (current.Left != null)
+                    parentsNewQueue.Enqueue(current.Left);
+                if (current.Right != null)
+                    parentsNewQueue.Enqueue(current.Right);
+
+            }
+            foreach (int Val in treeValue) { Console.WriteLine(Val); }
+
+
+
+        }
 
         public void AddItem(T value)
         {
@@ -58,43 +133,49 @@ namespace ProjectAlgorithm
 
         }
 
+
+
+
+
+        public Tree<T> FindParent(int value, out Tree<T> parent)
+        {
+
+            Tree<T> current = Head;
+            parent = null;
+
+
+            while (current != null)
+            {
+
+
+                if (Convert.ToInt32(current.Value) > value)
+                {
+
+                    parent = current;
+                    current = current.Left;
+                }
+                else if (Convert.ToInt32(current.Value) < value)
+                {
+
+                    parent = current;
+                    current = current.Right;
+                }
+                else
+                {
+
+                    break;
+                }
+            }
+            return current;
+        }
         public void RemoveItem(int value)
         {
 
 
             Tree<T> current = FindParent(value, out Tree<T> parent);
-            Tree<T> FindParent(int value, out Tree<T> parent)
-            {
-
-                Tree<T> current = Head;
-                parent = null;
 
 
-                while (current != null)
-                {
 
-
-                    if (Convert.ToInt32(current.Value) > value)
-                    {
-
-                        parent = current;
-                        current = current.Left;
-                    }
-                    else if (Convert.ToInt32(current.Value) < value)
-                    {
-
-                        parent = current;
-                        current = current.Right;
-                    }
-                    else
-                    {
-
-                        break;
-                    }
-                }
-
-                return current;
-            }
 
 
             if (current == null)
