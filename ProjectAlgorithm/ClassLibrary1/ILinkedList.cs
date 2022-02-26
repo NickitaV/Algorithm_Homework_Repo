@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjectAlgorithm
 {
-    internal interface ILinkedList<T>
+   public interface ILinkedList<T>
     {
         int GetCount(); // возвращает количество элементов в списке
         void AddNode(T value);  // добавляет новый элемент списка

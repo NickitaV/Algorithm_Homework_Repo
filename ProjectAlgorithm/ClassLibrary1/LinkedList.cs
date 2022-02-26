@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjectAlgorithm
 {
-    internal class LinkedList<T> : ILinkedList<T>
+    public class LinkedList<T> : ILinkedList<T>
     {
         public Node<T> First { get; set; }
 
