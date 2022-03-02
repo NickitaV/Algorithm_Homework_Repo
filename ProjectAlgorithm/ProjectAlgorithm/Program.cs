@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 namespace ProjectAlgorithm
@@ -7,30 +8,15 @@ namespace ProjectAlgorithm
     {
         static void Main(string[] args)
         {
-            GetAssemblyInfo();
-            static void GetAssemblyInfo()
-            {
+            GetAssemblyInfo assemblyInfo = new GetAssemblyInfo();
+            assemblyInfo.GetAssemblyInf(out Assembly asm);
 
-                string path = Directory.GetCurrentDirectory();
+            assemblyInfo.GetStartMenuInf(asm);
 
-                Assembly asm = Assembly.LoadFile($"{path}/ClassLibrary1.dll");
-                string FullName = asm.FullName;
-                Type[] types = asm.GetTypes();
-            
-                foreach (Type t in types)
-                {
-                    Console.WriteLine("Type: {0}", t.FullName);
-                }
-                Console.WriteLine();
-
-            }
-            StartMenu start = new StartMenu();
-            start.Input(out int LessonNumber, out int WorkNumber);
-
-
-            start.Choice(LessonNumber, WorkNumber);
 
         }
+
+
     }
 
 
