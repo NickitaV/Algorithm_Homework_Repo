@@ -6,16 +6,29 @@ using System.Diagnostics;
 namespace ProjectAlgorithm
 
 {
-    internal class StartMenu : IStartMenu
+    internal class StartMenu
     {
 
 
         public void Input(out int LessonNumber, out int WorkNumber)
         {
-            Console.WriteLine("Введите номер урока");
-            LessonNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите номер задания в уроке");
-            WorkNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Lesson 1: [1]- primeNumber\n          [2]- text\n          [3]- Fib\nLesson 2: [1]- LinkedList\nLesson 3: [1]- PointStruct&PointClass\nLesson 4: [1]- Tree");
+            Console.WriteLine("Введите номер урока(от 1 до 4)");
+            string newRead = Console.ReadLine();
+            if ((String.IsNullOrEmpty(newRead)) || ((Convert.ToInt32(newRead) < 1) || (Convert.ToInt32(newRead) > 4)))
+            {
+                Console.WriteLine("Вы ввели неправильное значение"); LessonNumber = 0; WorkNumber = 0;
+            }
+            else
+            {
+                LessonNumber = Convert.ToInt32(newRead);
+
+                Console.WriteLine("Введите номер задания в уроке(список выше)");
+                string workRead = Console.ReadLine();
+                if (String.IsNullOrEmpty(workRead)) { Console.WriteLine("Вы ввели пустую строку"); WorkNumber = 0; }
+
+                else WorkNumber = Convert.ToInt32(workRead);
+            }
         }
         public void Choice(int LessonNumber, int WorkNumber)
         {
@@ -72,7 +85,7 @@ namespace ProjectAlgorithm
             {
 
                 TreeMetod<int> treeMetod = new TreeMetod<int>();
-               
+
                 treeMetod.AddItem(16);
                 treeMetod.AddItem(10);
                 treeMetod.AddItem(7);
@@ -100,12 +113,12 @@ namespace ProjectAlgorithm
                 treeMetod.AddAfterThis(600, 20);
                 treeMetod.AddAfterThis(15, 14);
                 treeMetod.AddAfterThis(15, 0);
-           
-                treeMetod.AddAfterThis(600,500 );
+
+                treeMetod.AddAfterThis(600, 500);
                 treeMetod.AddAfterThis(600, 800);
                 treeMetod.AddAfterThis(500, 200);
                 treeMetod.AddAfterThis(500, 536);
-                treeMetod.AddAfterThis(15,50);
+                treeMetod.AddAfterThis(15, 50);
 
                 treeMetod.PrintTree();
                 treeMetod.AcrossTreeDepth();

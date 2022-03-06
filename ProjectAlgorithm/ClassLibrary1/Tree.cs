@@ -11,7 +11,7 @@ namespace ProjectAlgorithm
         Left,
         Right
     }
-    internal class Tree<T>
+    public class Tree<T>
     {
 
         public T Value { get; set; }

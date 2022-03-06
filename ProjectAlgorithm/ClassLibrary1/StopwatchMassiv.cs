@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectAlgorithm
 {
-    class StopwatchMassiv
+   public class StopwatchMassiv
     {
 
         public void Time(int PointSum, out double classTime, out double structTime)

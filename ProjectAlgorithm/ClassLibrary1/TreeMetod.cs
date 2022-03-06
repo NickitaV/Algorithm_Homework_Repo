@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectAlgorithm
 {
-    internal class TreeMetod<T>
+    public class TreeMetod<T>
     {
         public Tree<T> Head { get; set; }
 
