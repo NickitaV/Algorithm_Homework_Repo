@@ -14,9 +14,10 @@ namespace ProjectAlgorithm
         {
             Console.WriteLine("Lesson 1: [1]- primeNumber\n          [2]- text\n          [3]- Fib\nLesson 2: [1]- LinkedList\nLesson 3: [1]- PointStruct&PointClass\nLesson 4: [1]- Tree");
             Console.WriteLine("Lesson 7: [1]- NumberOfOptions(forSequence)");
-            Console.WriteLine("Введите номер урока(или от 1 до 4, или 7)");
+            Console.WriteLine("Lesson 8: [1]- 8 Queen(Ferz)");
+            Console.WriteLine("Введите номер урока(1 - 4, 7, 8)");
             string newRead = Console.ReadLine();
-            if ((String.IsNullOrEmpty(newRead)) || ((Convert.ToInt32(newRead) < 1) || ((Convert.ToInt32(newRead) > 4)&& (Convert.ToInt32(newRead) < 7))|| (Convert.ToInt32(newRead) > 7)))
+            if ((String.IsNullOrEmpty(newRead)) || ((Convert.ToInt32(newRead) < 1) || ((Convert.ToInt32(newRead) > 4) && (Convert.ToInt32(newRead) < 7)) || (Convert.ToInt32(newRead) > 8)))
             {
                 Console.WriteLine("Вы ввели неправильное значение"); LessonNumber = 0; WorkNumber = 0;
             }
@@ -132,7 +133,8 @@ namespace ProjectAlgorithm
 
             }
 
-            if ((LessonNumber == 7) && (WorkNumber == 1)) {
+            if ((LessonNumber == 7) && (WorkNumber == 1))
+            {
                 NumberOfOptions numberOf = new NumberOfOptions();
                 numberOf.InputSequenceSum(out int lengthSequence);
 
@@ -140,9 +142,15 @@ namespace ProjectAlgorithm
 
 
             }
+            if ((LessonNumber == 8) && (WorkNumber == 1))
+            {
+                FerzAction ferz = new FerzAction();
+
+
+
+                ferz.Action();
+            }
 
         }
-
     }
-
 }
