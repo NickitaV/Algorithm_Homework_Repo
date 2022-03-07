@@ -18,7 +18,7 @@ namespace ProjectAlgorithm
 
 
             string[,] BoardArr = new string[9, 9];
-            for (int i = 0; i < BoardArr.GetLength(0); i++)
+            for (int i = 1; i < BoardArr.GetLength(0); i++)
             {
                 for (int j = 1; j < BoardArr.GetLength(1); j++)
                 {
